@@ -2,7 +2,7 @@
 
 # Express-js-backend by Jobsimulator.dev
 
-This is a Pokemon API based on [PokeAPI](https://pokeapi.co/). Your job is to fix 5 issues:
+This is an Express JS Pokemon API based on PokeAPI. Your job is to fix 4 issues:
 
 1. Implement Get Pokemon by ID
 1. Implement Get Pokemon by Name

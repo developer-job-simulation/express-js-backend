@@ -11,6 +11,8 @@ This is an Express JS Pokemon API based on PokeAPI. Your job is to fix 4 issues:
 
 Please refer to the API Swagger documentation for clear specifications of the API's intended behavior. You can find the Swagger docs at http://localhost:3000/api-docs.
 
+Once you create a pull request with your changes, our automated test runner will validate your code to check if it is correct. No need for manual review!
+
 ## Learning Objectives
 
 You will learn and gain experience with:

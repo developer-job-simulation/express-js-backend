@@ -21,6 +21,7 @@ You will learn and gain experience with:
 - [Route HTTP Methods](https://expressjs.com/en/api.html#router.METHOD)
 - [RESTful API Design](https://restfulapi.net/)
 - Manual Input Validation
+- [Swagger](https://swagger.io/)
 
 ## How to start working
 

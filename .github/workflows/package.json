@@ -2,6 +2,7 @@
   "type": "module",
   "devDependencies": {
     "jsdom": "^20.0.2",
+    "supertest": "^6.3.1",
     "uvu": "^0.5.6"
   }
 }

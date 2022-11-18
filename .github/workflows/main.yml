@@ -27,8 +27,14 @@ jobs:
         with:
           node-version: 16
 
-      - name: npm install
+      - name: npm install project
+        run: cd src && npm i
+
+      - name: npm install test
         run: cd .github/workflows && npm i
+
+      - name: npm start
+        run: cd src && npm start > /dev/null 2>&1 &
 
       - name: Run Tests
         run: node .github/workflows/test.js

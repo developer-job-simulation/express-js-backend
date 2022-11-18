@@ -1,0 +1,136 @@
+openapi: "3.0.2"
+info:
+  title: JobSimulator.Dev Pokemon API
+  version: "1.0"
+servers:
+  - url: https://localhost:3000/
+paths:
+  /pokemon:
+    get:
+      description: "get all pokemon"
+      responses:
+        "200":
+          description: OK
+  /pokemon/{id}:
+    get:
+      description: "get pokemon by id"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: numeric id of pokemon to get
+      responses:
+        "200":
+          description: Returns Pokemon with id of {id}
+        "400":
+          description: Invalid ID. Id must be number.
+        "404":
+          description: Pokemon not found with id of {id}
+  /pokemon/name/{name}:
+    get:
+      description: "get pokemon by name"
+      parameters:
+        - in: path
+          name: name
+          schema:
+            type: string
+          required: true
+          description: name of pokemon to get
+      responses:
+        "200":
+          description: Returns Pokemon with name of {name}
+        "404":
+          description: Pokemon not found with name of {name}
+  /pokemon/type/{type}:
+    get:
+      description: "get pokemon by type"
+      parameters:
+        - in: path
+          name: type
+          schema:
+            type: string
+            enum:
+              [
+                normal,
+                fire,
+                water,
+                electric,
+                grass,
+                ice,
+                fighting,
+                poison,
+                ground,
+                flying,
+                psychic,
+                bug,
+                rock,
+                ghost,
+                dragon,
+                dark,
+                steel,
+                fairy,
+              ]
+          required: true
+          description: type of pokemon to get
+      responses:
+        "200":
+          description: Returns all Pokemon with type of {type}
+        "400":
+          description: Invalid type provided.
+        "404":
+          description: Pokemon not found with type of {type}
+  /pokemon/hp:
+    get:
+      description: "get pokemon, filtered by hp"
+      parameters:
+        - in: query
+          name: "[lt]"
+          schema:
+            type: integer
+          description: Find all Pokemon with HP < X
+          examples:
+            lt:
+              value: "[lt]=40"
+              summary: get all pokemon with HP < 40
+        - in: query
+          name: "[gt]"
+          schema:
+            type: integer
+          description: Find all Pokemon with HP > X
+          examples:
+            gt:
+              value: "[gt]=20"
+              summary: get all pokemon with HP > 20
+        - in: query
+          name: "[lte]"
+          schema:
+            type: integer
+          description: Find all Pokemon with HP <= X
+          examples:
+            lte:
+              value: "[lte]=80"
+              summary: get all pokemon with HP <= 80
+            lte and gt:
+              value: "[lte]=80&[gt]=40"
+              summary: get all pokemon with HP <= 80 and HP > 40
+        - in: query
+          name: "[gte]"
+          schema:
+            type: integer
+          description: Find all Pokemon with HP >= X
+          examples:
+            gte:
+              value: "[gte]=20"
+              summary: get all pokemon with HP >= 20
+            gte and lte:
+              value: "[gte]=20&[lte]=40"
+              summary: get all pokemon with HP >= 20 and HP <= 40
+      responses:
+        "200":
+          description: Returns all Pokemon, filtered by HP
+        "400":
+          description: Invalid HP Filter(s) provided
+        "404":
+          description: No pokemon found for given filter(s)

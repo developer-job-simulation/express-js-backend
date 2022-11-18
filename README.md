@@ -1,21 +1,34 @@
-[Banner Generator](https://og-playground.vercel.app/?share=zZTJbtswEIZfhWBROAHsaPMSC0mBIu0hPRQFUqAXX0hxKNOWSIKirMXwu5e0IztLDz0VPQgS_380JL8Zco8zxQCn-I6J3UoiVNmugPv93n8jxESlC9KlaMQLaEfjk7oGka-tE6Mw_DiIjWB2_UYjhcjlo4WyckYG0oIZrE1dWcG7B-VE6XO9tv10X4SBzAolvauKupSDS0m2zY2qJXssSQ7OL4QEYia5IUy4RFdWIaqsVeUYfWCUTzl3H5zziEfX5znc3E-id79Pw2epAOsW8aRJJmSeokn8IvTX864X4Sn6cFjJTyt5J8ocVSa7X-G1tbpKgyArVM0Y7KqbTJVBwijpAi4KqAJtYCegCaL4NmyjcL4IomiexEkSLqOZJgDAabbpCrrpKpn0bWZqrek2L5tdT9qNYLxuFee0Vz1b0GXVy9mO9ot1VjdT2CXbpQxzuZ5D2ciM5yBoy0VS863q2Hxbyqy70TJf4XOVn4u2wvEs1O0KHw4ocHtCaGiHtw2BkCaMHeGMZrp15PS5LS49QGqrLqqF1n72nfCuyn9TyWXIIB8jk9OrKI7GvlYoDuPrkxTPZmPkFAf0-lzYl2kfCqFdVr-Giz2aNEC3wk4ucZPMBY7eRbq-U8arhshKE-NWNJi-_ggdaSH0w6iNa1b0nZRw5Bc4gP8vySO2xcI_A8jp0nNNPOB_TfL1-ZqF4R8A0w59U_RJlHVBrDI37ni95Dy88Rgr7e-MCqd7fKSI01t3YvHp0sLp1A8Y0DrHKSdFBWMMpdqIn53296BtjiOXx6_pa0mB4dSaGg6H3w)
+![](./image.svg)
 
-# <project-name-goes-here> by Jobsimulator.dev
+# Express-js-backend by Jobsimulator.dev
 
-This is a <project-blurb>. Your job is to fix <number-of-issues> issues:
+This is a Pokemon API based on [PokeAPI](https://pokeapi.co/). Your job is to fix 5 issues:
 
-1. <issue-description>
+1. Implement Get Pokemon by ID
+1. Implement Get Pokemon by Name
+1. Implement Get Pokemon by Type
+1. Implement Get Pokemon by HP (with Query Params)
+
+Please refer to the API Swagger documentation for clear specifications of the API's intended behavior. You can find the Swagger docs at http://localhost:3000/api-docs.
 
 ## Learning Objectives
 
 You will learn and gain experience with:
 
-- <learning-objective>
+- [Express Routes](https://expressjs.com/en/guide/routing.html)
+- [Query Params](https://expressjs.com/en/api.html#req.params)
+- [HTTP Status Codes](https://expressjs.com/en/api.html#res.status)
+- [Route HTTP Methods](https://expressjs.com/en/api.html#router.METHOD)
+- [RESTful API Design](https://restfulapi.net/)
+- Manual Input Validation
 
 ## How to start working
 
 1. Fork this repo and clone it locally.
-1. Open index.html in your browser to see the current state of the project.
+1. enter `src` directory and run `npm install` to install dependencies.
+1. run `npm start` to start the development server.
+1. Open src/app.js in your IDE to start exploring the codebase.
+1. Open http://localhost:3000/api-docs to view the Swagger docs. This is where you can find the API specifications.
 1. Fix all the issues (hints are provided as TODO comments in the code)
 1. Once all your solutions are complete, create a single Pull Request to this repository
 1. Check if your solutions passes our automated tests.

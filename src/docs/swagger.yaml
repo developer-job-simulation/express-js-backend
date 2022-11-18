@@ -24,10 +24,26 @@ paths:
       responses:
         "200":
           description: Returns Pokemon with id of {id}
+          content:
+            application/json:
+              example:
+                {
+                  id: 482,
+                  name: { english: "Azelf", japanese: "アグノム", chinese: "亚克诺姆", french: "Créfadet" },
+                  type: ["Psychic"],
+                  base: { HP: 75, Attack: 125, Defense: 70, "Sp. Attack": 125, "Sp. Defense": 70, Speed: 115 },
+                }
         "400":
           description: Invalid ID. Id must be number.
+          content:
+            application/json:
+              example: { error: "Invalid ID" }
+
         "404":
           description: Pokemon not found with id of {id}
+          content:
+            application/json:
+              example: { error: "Not found" }
   /pokemon/name/{name}:
     get:
       description: "get pokemon by name"
@@ -41,8 +57,20 @@ paths:
       responses:
         "200":
           description: Returns Pokemon with name of {name}
+          content:
+            application/json:
+              example:
+                {
+                  id: 151,
+                  name: { english: "Mew", japanese: "ミュウ", chinese: "梦幻", french: "Mew" },
+                  type: ["Psychic"],
+                  base: { HP: 100, Attack: 100, Defense: 100, "Sp. Attack": 100, "Sp. Defense": 100, Speed: 100 },
+                }
         "404":
           description: Pokemon not found with name of {name}
+          content:
+            application/json:
+              example: { error: "Not found" }
   /pokemon/type/{type}:
     get:
       description: "get pokemon by type"
@@ -77,10 +105,28 @@ paths:
       responses:
         "200":
           description: Returns all Pokemon with type of {type}
+          content:
+            application/json:
+              example:
+                [
+                  {
+                    id: 35,
+                    name: { english: "Clefairy", japanese: "ピッピ", chinese: "皮皮", french: "Mélofée" },
+                    type: ["Fairy"],
+                    base: { HP: 70, Attack: 45, Defense: 48, "Sp. Attack": 60, "Sp. Defense": 65, Speed: 35 },
+                  },
+                  // more values ...,
+                ]
         "400":
           description: Invalid type provided.
-        "404":
-          description: Pokemon not found with type of {type}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example: { error: "Bad request" }
   /pokemon/hp:
     get:
       description: "get pokemon, filtered by hp"
@@ -130,7 +176,33 @@ paths:
       responses:
         "200":
           description: Returns all Pokemon, filtered by HP
+          content:
+            application/json:
+              example:
+                {
+                  id: 242,
+                  name: { english: "Blissey", japanese: "ハピナス", chinese: "幸福蛋", french: "Leuphorie" },
+                  type: ["Normal"],
+                  base: { HP: 255, Attack: 10, Defense: 10, "Sp. Attack": 75, "Sp. Defense": 135, Speed: 55 },
+                }
         "400":
           description: Invalid HP Filter(s) provided
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example: { error: 'Invalid Operator. Must be one of ["gt","gte","lt","lte"]' }
+
         "404":
           description: No pokemon found for given filter(s)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example: { error: "Not found" }

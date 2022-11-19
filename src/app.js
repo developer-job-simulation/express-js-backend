@@ -11,8 +11,6 @@ const pokemonRouter = require('./routes/pokemon');
 
 const app = express();
 
-app.set('query parser', 'simple');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -9,8 +9,7 @@ router.get('/', function (req, res, next) {
 
 /* GET Pokemon by HP */
 router.get('/hp', function (req, res, next) {
-  const filters = ['[gt]', '[gte]', '[lt]', '[lte]'];
-  console.log(req.query);
+  const filters = ['gt', 'gte', 'lt', 'lte'];
   Object.entries(req.query).forEach(([key, value]) => {
     if (!filters.includes(key)) {
       res

@@ -14,7 +14,9 @@ router.get('/hp', function (req, res, next) {
     if (!filters.includes(key)) {
       res
         .status(400)
-        .send('Invalid Operator. Must be one of ["gt","gte","lt","lte"]');
+        .json({
+          error: 'Invalid Operator. Must be one of ["gt","gte","lt","lte"]',
+        });
     }
   });
   const filteredPokemon = pokedex.filter(

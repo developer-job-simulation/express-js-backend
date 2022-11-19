@@ -9,7 +9,8 @@ router.get('/', function (req, res, next) {
 
 /* GET Pokemon by HP */
 router.get('/hp', function (req, res, next) {
-  const filters = ['gt', 'gte', 'lt', 'lte'];
+  const filters = ['[gt]', '[gte]', '[lt]', '[lte]'];
+  console.log(req.query);
   Object.entries(req.query).forEach(([key, value]) => {
     if (!filters.includes(key)) {
       res
@@ -34,7 +35,7 @@ router.get('/hp', function (req, res, next) {
 /* GET Pokemon by Id. */
 router.get('/:id', function (req, res, next) {
   if (isNaN(Number(req.params.id)))
-    res.status(404).json({ error: 'Invalid ID' });
+    res.status(400).json({ error: 'Invalid ID' });
 
   const pokemon = pokedex.find((p) => p.id === Number(req.params.id));
   if (!pokemon) res.status(404).json({ error: 'Not found' });

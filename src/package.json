@@ -8,7 +8,7 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "~4.17.3",
     "morgan": "~1.9.1",
     "swagger-ui-express": "^4.6.0",
     "yamljs": "^0.3.0"

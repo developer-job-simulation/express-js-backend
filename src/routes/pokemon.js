@@ -12,7 +12,7 @@ router.get("/name/:name", function (req, res, next) {
   const filteredPokedex = pokedex.find(p => p.name.english.toLowerCase() === req.params.name)
   if (!filteredPokedex) {
     return res.status(404).json({
-      error: "Not Found"
+      error: "Not found"
     })
   }
   res.status(200).json(filteredPokedex);
@@ -45,7 +45,7 @@ router.get("/hp", function (req, res, next) {
     .filter(p => lte ? p.base.HP <= lte : true)
     .filter(p => gte ? p.base.HP >= gte : true)
   if (filteredPokedex.length === 0) {
-    return res.status(404).json({ error: 'not found' })
+    return res.status(404).json({ error: 'Not found' })
   }
   res.status(200).json(filteredPokedex);
 });
@@ -53,13 +53,12 @@ router.get("/hp", function (req, res, next) {
 /* GET Pokemon by Id. */
 router.get("/:id", function (req, res, next) {
   if (isNaN(Number(req.params.id))) {
-    console.log('am i here')
     return res.status(400).json({error: "Invalid ID"})
   }
   const filteredPokedex = pokedex.find(p => p.id === Number(req.params.id))
   if (!filteredPokedex) {
     return res.status(404).json({
-      error: "Not Found"
+      error: "Not found"
     })
   }
   res.status(200).json(filteredPokedex);

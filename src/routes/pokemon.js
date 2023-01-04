@@ -28,18 +28,19 @@ router.get("/hp", function (req, res, next) {
         pokemon = pokemon.filter(x => x.base.HP < req.query[q])
         break
       }
-      default: res.json({"error": "Invalid Operator. Must be one of [\"gt\",\"gte\",\"lt\",\"lte\"]"})
+      default: res.status(400).json({"error": "Invalid Operator. Must be one of [\"gt\",\"gte\",\"lt\",\"lte\"]"})
     }
   }
-  if(!pokemon) res.json({"error": "Not found"})
+  if(!pokemon) res.status(404).json({"error": "Not found"})
   else res.json(pokemon)
   return;
 });
 
 /* GET Pokemon by Id. */
 router.get("/:id", function (req, res, next) {
+  if (isNaN(+req.params.id)) res.status(400).json({error: "Invalid ID"})
   let pokemon = pokedex.find(x => x.id == req.params.id)
-  if(!pokemon) res.json({"error": "Not found"})
+  if(!pokemon) res.status(404).json({"error": "Not found"})
   else res.json(pokemon)
   return;
 });
@@ -48,7 +49,7 @@ router.get("/:id", function (req, res, next) {
 router.get("/name/:name", function (req, res, next) {
   let name = req.params.name[0].toUpperCase() + req.params.name.slice(1).toLowerCase()
   let pokemon = pokedex.find(x => x.name.english == name)
-  if(!pokemon) res.json({"error": "Not found"})
+  if(!pokemon) res.status(404).json({"error": "Not found"})
   else res.json(pokemon)
   return;
 });
@@ -56,8 +57,8 @@ router.get("/name/:name", function (req, res, next) {
 /* GET Pokemon by Type */
 router.get("/type/:type", function (req, res, next) {
   let type = req.params.type[0].toUpperCase() + req.params.type.slice(1).toLowerCase()
-  let pokemon = pokedex.filter(x => x.type == type)
-  if(!pokemon) res.json({"error": "Not found"})
+  let pokemon = pokedex.filter(x => x.type.includes(type))
+  if(!pokemon) res.status(404).json({"error": "Not found"})
   else res.json(pokemon)
   return;
 });

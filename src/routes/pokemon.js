@@ -58,7 +58,7 @@ router.get("/name/:name", function (req, res, next) {
 router.get("/type/:type", function (req, res, next) {
   let type = req.params.type[0].toUpperCase() + req.params.type.slice(1).toLowerCase()
   let pokemon = pokedex.filter(x => x.type.includes(type))
-  if(!pokemon) res.status(404).json({"error": "Not found"})
+  if(!pokemon.length) res.status(404).json({"error": "Not found"})
   else res.json(pokemon)
   return;
 });

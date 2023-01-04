@@ -31,7 +31,7 @@ router.get("/hp", function (req, res, next) {
       default: res.status(400).json({"error": "Invalid Operator. Must be one of [\"gt\",\"gte\",\"lt\",\"lte\"]"})
     }
   }
-  if(!pokemon) res.status(404).json({"error": "Not found"})
+  if(!pokemon.length) res.status(404).json({"error": "Not found"})
   else res.json(pokemon)
   return;
 });

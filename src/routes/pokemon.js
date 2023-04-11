@@ -22,9 +22,12 @@ router.get("/:id", function (req, res, next) {
 
 /* GET Pokemon by English Name */
 router.get("/name/:name", function (req, res, next) {
-  // TODO: Implement this route. See swagger docs for details, by visiting http://localhost:3000/api-docs
-  res.status(501).json({ message: "Not Implemented" });
-  return;
+  let { name } = req.params;
+  name = name.toLowerCase();
+  const pokemon = pokedex.find((el) => el.name.english.toLowerCase() === name);
+
+  if (!pokemon) return res.status(404).json({ error: "Not found" });
+  return res.status(200).json(pokemon);
 });
 
 /* GET Pokemon by Type */

@@ -4,7 +4,7 @@
 
 This is an Express JS Pokemon API based on PokeAPI. Your job is to fix 4 issues:
 
-1. Implement Get Pokemon by ID
+1. ~~Implement Get Pokemon by ID~~
 1. Implement Get Pokemon by Name
 1. Implement Get Pokemon by Type
 1. Implement Get Pokemon by HP (with Query Params)

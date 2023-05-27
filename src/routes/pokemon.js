@@ -56,29 +56,32 @@ router.get('/hp', function (req, res, next) {
   const { gt, lt, lte, gte } = req.query;
   console.log('gt: ', gt);
   console.log('lt: ', lt);
-  let result;
+  let result = pokedex;
 
   if (gt) {
-    result = pokedex.filter((pokemon) => {
+    result = result.filter((pokemon) => {
       return pokemon.base.HP > parseInt(gt);
     });
   }
   if (lt) {
-    result = pokedex.filter((pokemon) => {
+    result = result.filter((pokemon) => {
       return pokemon.base.HP < parseInt(lt);
     });
   }
   if (gte) {
-    result = pokedex.filter((pokemon) => {
+    result = result.filter((pokemon) => {
       return pokemon.base.HP >= parseInt(gt);
     });
   }
   if (lte) {
-    result = pokedex.filter((pokemon) => {
+    result = result.filter((pokemon) => {
       return pokemon.base.HP <= parseInt(gt);
     });
   }
 
+  if (!result.length) {
+    return res.status(404).json({ error: 'Not found' });
+  }
   if (!gt && !lt && !gte && !lte) {
     res.status(400).json({
       error: 'Invalid Operator. Must be one of ["gt","gte","lt","lte"]',

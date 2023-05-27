@@ -53,8 +53,20 @@ router.get('/name/:name', function (req, res, next) {
 /* GET Pokemon by Type */
 router.get('/type/:type', function (req, res, next) {
   // TODO: Implement this route. See swagger docs for details, by visiting http://localhost:3000/api-docs
-  res.status(501).json({ message: 'Not Implemented' });
-  return;
+  const type = req.params.type;
+  console.log(type);
+  const capitalizedType = type.replace(type.at(0), type.at(0).toUpperCase());
+  console.log(capitalizedType);
+  const result = pokedex.filter((pokemon) => {
+    return pokemon.type.includes(capitalizedType);
+  });
+
+  if (!result.length) {
+    res.status(404).json({ error: 'Bad request' });
+    return next();
+  }
+  res.status(200).json(result);
+  return next();
 });
 
 /* GET Pokemon by HP */

@@ -29,8 +29,25 @@ router.get('/:id', function (req, res, next) {
 /* GET Pokemon by English Name */
 router.get('/name/:name', function (req, res, next) {
   // TODO: Implement this route. See swagger docs for details, by visiting http://localhost:3000/api-docs
-  res.status(501).json({ message: 'Not Implemented' });
-  return;
+
+  const name = req.params.name.toLowerCase();
+
+  const result = pokedex.find((pokemon) => {
+    return (
+      pokemon.name.english.toLowerCase() === name ||
+      pokemon.name.chinese.toLowerCase() === name ||
+      pokemon.name.french.toLowerCase() === name ||
+      pokemon.name.japanese.toLowerCase() === name
+    );
+  });
+  // console.log('pokemon: ', result);
+  if (!result) {
+    res.status(404).json({ error: 'Not found' });
+    return next();
+  }
+
+  res.status(200).json(result);
+  return next();
 });
 
 /* GET Pokemon by Type */

@@ -42,7 +42,7 @@ router.get('/type/:type', function (req, res, next) {
   });
 
   if (!result.length) {
-    res.status(404).json({ error: 'Bad request' });
+    res.status(400).json({ error: 'Bad request' });
     return next();
   }
   return res.status(200).json(result);

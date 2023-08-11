@@ -17,7 +17,7 @@ router.get('/name/:name', function (req, res, next) {
   if (foundPokemon) {
     return res.status(200).json(foundPokemon)
   }
-  return res.status(404).json({ message: 'Not found' })
+  return res.status(404).json({ error: 'Not found' })
 })
 
 /* GET Pokemon by Type */
@@ -29,7 +29,7 @@ router.get('/type/:type', function (req, res, next) {
   if (foundPokemon.length > 0) {
     return res.status(200).json(foundPokemon)
   }
-  return res.status(400).json({ message: 'Bad request' })
+  return res.status(400).json({ error: 'Bad request' })
 })
 
 /* GET Pokemon by HP */
@@ -60,7 +60,7 @@ router.get('/hp', function (req, res, next) {
   if (foundPokemon.length) {
     return res.status(200).json(foundPokemon)
   }
-  return res.status(404).json({ message: 'Not found' })
+  return res.status(404).json({ error: 'Not found' })
 })
 
 /* GET Pokemon by Id. */
@@ -77,7 +77,7 @@ router.get('/:id', function (req, res, next) {
     return res.status(200).json(foundPokemon)
   }
 
-  return res.status(404).json({ message: 'Not found' })
+  return res.status(404).json({ error: 'Not found' })
 })
 
 module.exports = router

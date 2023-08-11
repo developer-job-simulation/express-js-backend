@@ -73,7 +73,7 @@ router.get('/:id', function (req, res, next) {
   }
 
   const foundPokemon = pokedex.find((item) => item.id === Number(id))
-  if (foundPokemon) {
+  if (foundPokemon.length) {
     return res.status(200).json(foundPokemon)
   }
 

@@ -57,7 +57,7 @@ router.get('/hp', function (req, res, next) {
         error: 'Invalid Operator. Must be one of ["gt","gte","lt","lte"]',
       })
   }
-  if (foundPokemon.length) {
+  if (foundPokemon.length > 0) {
     return res.status(200).json(foundPokemon)
   }
   return res.status(404).json({ error: 'Not found' })
@@ -73,7 +73,7 @@ router.get('/:id', function (req, res, next) {
   }
 
   const foundPokemon = pokedex.find((item) => item.id === Number(id))
-  if (foundPokemon.length) {
+  if (foundPokemon) {
     return res.status(200).json(foundPokemon)
   }
 

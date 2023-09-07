@@ -94,7 +94,7 @@ router.get("/type/:type", function (req, res, next) {
   if (pokemon.length > 0) {
     res.json(pokemon);
   } else {
-    res.status(404).json({ error: "Bad request" });
+    res.status(400).json({ error: "Bad request" });
   }
   return;
 });

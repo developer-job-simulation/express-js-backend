@@ -79,9 +79,9 @@ router.get("/:id", function (req, res, next) {
 
 /* GET Pokemon by English Name */
 router.get("/name/:name", function (req, res, next) {
-  const name = req.params.name;
+  const name = req.params.name.toLowerCase();
 
-  result = pokedex.find(pokemon => pokemon["name"]["english"] === name);
+  result = pokedex.find(pokemon => pokemon["name"]["english"].toLowerCase() === name);
 
   if (!result) {
     res.status(404).json({ error: "Not found"});

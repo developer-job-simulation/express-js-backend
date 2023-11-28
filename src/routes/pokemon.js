@@ -20,7 +20,7 @@ router.get("/hp", function (req, res, next) {
   // Validate query parameters
   if ([lt, gt, lte, gte].every(param => isNaN(param))) {
     res.status(400).json({ 
-      error: "Invalid Operator. Must be one of [\\\"gt\\\",\\\"gte\\\",\\\"lt\\\",\\\"lte\\\"]" 
+      error: "Invalid Operator. Must be one of [\"gt\",\"gte\",\"lt\",\"lte\"]" 
     });
     return;
   }

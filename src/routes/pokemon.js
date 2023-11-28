@@ -44,8 +44,18 @@ router.get("/name/:name", function (req, res, next) {
 
 /* GET Pokemon by Type */
 router.get("/type/:type", function (req, res, next) {
-  // TODO: Implement this route. See swagger docs for details, by visiting http://localhost:3000/api-docs
-  res.status(501).json({ message: "Not Implemented" });
+  const requestedType = 
+    req.params.type.charAt(0).toUpperCase() + 
+    req.params.type.slice(1).toLowerCase();
+
+  const result = pokedex.filter(pokemon => pokemon.type.includes(requestedType));
+
+  if (!result || result.length === 0) {
+    res.status(400).json({ error: "Bad request"});
+    return;
+  }
+
+  res.status(200).json(result);
   return;
 });
 

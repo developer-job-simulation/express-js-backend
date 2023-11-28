@@ -16,7 +16,7 @@ router.get("/:id", function (req, res, next) {
     return;
   }
 
-  result = pokedex.find(pokemon => pokemon["id"] === parseInt(req.params.id));
+  result = pokedex.find(pokemon => pokemon["id"] === id);
 
   if (!result) {
     res.status(404).json({ error: "Not found"});
@@ -29,8 +29,16 @@ router.get("/:id", function (req, res, next) {
 
 /* GET Pokemon by English Name */
 router.get("/name/:name", function (req, res, next) {
-  // TODO: Implement this route. See swagger docs for details, by visiting http://localhost:3000/api-docs
-  res.status(501).json({ message: "Not Implemented" });
+  const name = req.params.name;
+
+  result = pokedex.find(pokemon => pokemon["name"]["english"] === name);
+
+  if (!result) {
+    res.status(404).json({ error: "Not found"});
+    return
+  }
+
+  res.status(200).json(result);
   return;
 });
 

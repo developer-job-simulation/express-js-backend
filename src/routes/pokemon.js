@@ -15,15 +15,17 @@ router.get("/:id", function (req, res, next) {
     if (searchResult) res.status(200).json(searchResult);
     else res.status(404).json({ error: "Not found" });
   } catch (e) {
-    res.status(400).json({ error: "Invalid ID" }); // Validate
+    res.status(400).json({ error: "Invalid ID" });
   }
   return;
 });
 
 /* GET Pokemon by English Name */
 router.get("/name/:name", function (req, res, next) {
-  // TODO: Implement this route. See swagger docs for details, by visiting http://localhost:3000/api-docs
-  res.status(501).json({ message: "Not Implemented" });
+  const name = req.params.name.toLowerCase();
+  const searchResult = pokedex.find(pokemon => `${pokemon.name.english}`.toLowerCase() == name);
+  if (searchResult) res.status(200).json(searchResult);
+  else res.status(404).json({ error: "Not found" });
   return;
 });
 

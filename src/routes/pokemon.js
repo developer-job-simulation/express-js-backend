@@ -33,8 +33,8 @@ router.get("/name/:name", function (req, res, next) {
 router.get("/type/:type", function (req, res, next) {
   const qType = req.params.type.toLowerCase();
   const searchResults = pokedex.filter(pokemon => pokemon.type.find(type => type.toLowerCase() === qType));
-  if (searchResults) res.status(200).json(searchResults);
-  else res.status(404).json({ error: "Not found" });
+  if (searchResults.length) res.status(200).json(searchResults);
+  else res.status(400).json({ error: "Bad request" });
   return;
 });
 
